@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="calculator/calculator.css">
+	<script type="text/javascript">
+		var current=0;
+		var prevouise=0;
+		var operator="";
+
+		function num(textnumber) {
+			current=(current*10)+textnumber;
+			document.getElementById("input2").value=current;
+		}
+
+		function oper(oper){
+			if(prevouise!=0){
+				if (operator=='+') {
+					prevouise=prevouise+current;
+				}
+				else if (operator=='-') {
+					prevouise=prevouise-current;
+				}
+				else if (operator=='*') {
+					prevouise=prevouise*current;
+				}
+				else if (operator=='/') {
+					prevouise=prevouise/current;
+				}
+			}
+			else{
+				prevouise=current;
+			}
+			current=0;
+			operator=oper;
+			document.getElementById("input2").value="";
+		}
+
+		function answer(){
+			if (operator=='+') {
+				current=prevouise+current;
+			}
+			else if (operator=='-') {
+				current=prevouise-current;
+			}
+			else if (operator=='*') {
+				current=prevouise*current;
+			}
+			else if (operator=='/') {
+				current=prevouise/current;
+			}
+			document.getElementById("input2").value=current;
+		}
+
+		function c(){
+			current=0;
+			prevouise=0;
+			operator=0;
+			document.getElementById("input2").value="";
+		}
+	</script>
+</head>
+<body>
+	<div class="div1">
+		<input type="text" class="input1" id="input2"><br>
+		 <div class="div2">
+			<button onclick="num(6)">6</button>
+			<button onclick="num(7)">7</button>
+			<button onclick="num(8)">8</button>
+			<button onclick="num(9)">9</button><br>
+			<button onclick="num(2)">2</button>
+			<button onclick="num(3)">3</button>
+			<button onclick="num(4)">4</button>
+			<button onclick="num(5)">5</button><br>
+			<button onclick="num(0)">0</button>
+			<button onclick="num(1)">1</button>
+			<button class="color" onclick="c()">c</button>
+			<button class="color" onclick="answer()">=</button><br>
+			<button class="color" onclick="oper('*')">*</button>
+			<button class="color" onclick="oper('+')">+</button>
+			<button class="color" onclick="oper('-')">-</button>
+			<button class="color" onclick="oper('/')">/</button>
+		 </div>
+	</div>
+
+</body>
+</html>
+
+
