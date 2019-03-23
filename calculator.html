@@ -7,10 +7,10 @@
 		var current=0;
 		var prevouise=0;
 		var operator="";
-
+		let e=0
 		function num(textnumber) {
-			current=(current*10)+textnumber;
-			document.getElementById("input2").value=current;
+			document.getElementById("input2").value+=textnumber
+			current= parseFloat(document.getElementById('input2').value)
 		}
 
 		function oper(oper){
@@ -26,6 +26,12 @@
 				}
 				else if (operator=='/') {
 					prevouise=prevouise/current;
+				}
+				else if (operator=='sqrt') {
+					prevouise=Math.pow(prevouise,1/current);
+				}
+				else if (operator=='pow') {
+					prevouise=Math.pow(prevouise,current);
 				}
 			}
 			else{
@@ -49,6 +55,13 @@
 			else if (operator=='/') {
 				current=prevouise/current;
 			}
+			else if (operator=='sqrt') {
+				current=Math.pow(prevouise, 1/current);
+			}
+			else if (operator=='pow') {
+				current=Math.pow(prevouise, current);
+			}
+			e=1;
 			document.getElementById("input2").value=current;
 		}
 
@@ -64,22 +77,25 @@
 	<div class="div1">
 		<input type="text" class="input1" id="input2"><br>
 		 <div class="div2">
-			<button onclick="num(6)">6</button>
+		 	<button onclick="oper('pow')">pow</button>
+		 	<button onclick="oper('sqrt')">sqrt</button>
+		 	<button class="color" onclick="oper('/')">/</button><br>
 			<button onclick="num(7)">7</button>
 			<button onclick="num(8)">8</button>
-			<button onclick="num(9)">9</button><br>
+			<button onclick="num(9)">9</button>
+			<button class="color" onclick="oper('*')">*</button><br>
+			<button onclick="num(4)">4</button>
+			<button onclick="num(5)">5</button>
+			<button onclick="num(6)">6</button>
+			<button class="color" onclick="oper('-')">-</button><br>
+			<button onclick="num(1)">1</button>
 			<button onclick="num(2)">2</button>
 			<button onclick="num(3)">3</button>
-			<button onclick="num(4)">4</button>
-			<button onclick="num(5)">5</button><br>
-			<button onclick="num(0)">0</button>
-			<button onclick="num(1)">1</button>
+			<button class="color" onclick="oper('+')">+</button><br>
 			<button class="color" onclick="c()">c</button>
+			<button onclick="num(0)">0</button>
+			<button onclick="num('.')">.</button>
 			<button class="color" onclick="answer()">=</button><br>
-			<button class="color" onclick="oper('*')">*</button>
-			<button class="color" onclick="oper('+')">+</button>
-			<button class="color" onclick="oper('-')">-</button>
-			<button class="color" onclick="oper('/')">/</button>
 		 </div>
 	</div>
 
